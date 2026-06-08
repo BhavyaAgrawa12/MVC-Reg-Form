@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Task Manager Registration </title>
+  <link rel="stylesheet" href="/css/output.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+</head>
+
+<body class="bg-slate-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white w-full max-w-md rounded-2xl shadow-xl p-8">
+    <div class="text-center mb-8">
+      <h1 class="text-sky-500 font-bold text-lg">Registration</h1>
+    </div>
+    <br>
+
+    {{#each errors}}
+    <div class="bg-red-100 text-red-600 p-3 rounded-lg mb-4">
+      {{message}}
+    </div>
+    {{/each}}
+
+
+    <form action="/userregister" method="POST" class="space-y-4">
+      <div>
+        <label class="block text-sm text-slate-600 mb-2">Username:</label>
+        <input type="text" id="username" value="{{username}}" name="username"
+          class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400"
+          placeholder="Enter your username">
+      </div>
+
+      <div>
+        <label class="block text-sm text-slate-600 mb-2">User Email:</label>
+        <input type="email" id="email" value="{{email}}" name="email"
+          class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400"
+          placeholder="Enter your email">
+      </div>
+
+      <div>
+        <label class="block text-sm text-slate-600 mb-2">User Phone:</label>
+        <input type="text" id="phone" value="{{phoneNumber}}" name="phoneNumber"
+          class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400"
+          placeholder="Enter your phone number">
+      </div>
+
+      <div>
+        <label class="block text-sm text-slate-600 mb-2">Password:</label>
+        <input type="password" id="password" value="{{password}}" name="password"
+          class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400"
+          placeholder="Enter your password">
+      </div>
+
+      <button type="submit"
+        class="bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-sky-600 transition-colors">Register</button>
+    </form>
+
+    <p class="text-center text-slate-500 mt-6">Already have an account? <a href="/login"
+        class="text-sky-500 font-medium">Login here</a></p>
+
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/output.css">
+    <title>Edit Task</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+    
+    
+</head>
+
+<body class="bg-sky-50 min-h-screen">
+    {{> appHeader}}
+    <div class="max-w-6xl mx-auto px-6 py-10">
+        <div class="bg-white max-w-lg mx-auto rounded-2xl shadow-2xl p-8">
+            <h2 class="text-3xl font-bold text-slate-800mb-6">Edit Task</h2>
+            {{#each errors}}
+            <div class="bg-red-100 text-red-600 p-3 rounded-lg mb-4">
+                {{message}}
+            </div>
+            {{/each}}
+            <form action="/task/edit/{{task._id}}" method="POST" class="space-y-5">
+                <div>
+                    <label class="block text-sm text-slate-600 mb-2">Title</label>
+                    <input type="text" name="title" value="{{task.title}}" placeholder="Enter task title"
+                        class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                </div>
+
+
+
+                <br>
+
+                <label class="block text-sm text-slate-600 mb-2">Description</label>
+
+                <textarea name="description"
+                    class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400">{{task.description}}</textarea>
+
+                <br>
+
+                <select name="status"
+                    class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                    <option value="pending">Pending</option>
+                </select>
+
+                <button type="submit"
+                    class="w-full bg-sky-500 text-white py-3 rounded-lg font-semibold hover:bg-sky-600 transition">
+                    Update Task
+                </button>
+
+            </form>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+
+<body class="bg-sky-50 min-h-screen">
+
+  {{> appHeader}}
+
+  <div class="max-w-6xl mx-auto p-6">
+
+    <div class="mb-8">
+      <h2 class="text-4xl font-bold text-slate-800">
+        Welcome, {{userData.username}}
+      </h2>
+
+      <p class="text-slate-500 mt-2">
+        Let's get things done.
+      </p>
+    </div>
+
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+      <div class="bg-white rounded-2xl shadow p-6">
+        <p class="text-slate-500">Total Tasks</p>
+        <h3 class="text-4xl font-bold text-sky-500">
+          {{totalTasks}}
+        </h3>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6">
+        <p class="text-slate-500">Completed</p>
+        <h3 class="text-4xl font-bold text-green-500">
+          {{completedTasks}}
+        </h3>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6">
+        <p class="text-slate-500">Pending</p>
+        <h3 class="text-4xl font-bold text-yellow-500">
+          {{pendingTasks}}
+        </h3>
+      </div>
+
+    </div>
+
+
+    <h2 class="text-2xl font-bold mb-4">
+      My Tasks
+    </h2>
+
+    <div class="space-y-4">
+      {{#if tasks.length}}
+      {{#each tasks}}
+
+      <div class="bg-white rounded-2xl shadow p-5 hover:shadow-lg transition-all duration-200">
+
+        <div class="flex justify-between items-start">
+
+          <div>
+            <h3 class="text-xl font-semibold text-slate-800">
+              {{title}}
+            </h3>
+
+            <p class="text-slate-500 mt-2">
+              {{description}}
+            </p>
+
+            {{#if (eq status "Completed")}}
+            <span class="inline-block mt-3 px-3 py-1 rounded-full text-sm bg-green-100 text-green-700">
+              ✓ Completed
+            </span>
+            {{else}}
+            <span class="inline-block mt-3 px-3 py-1 rounded-full text-sm bg-yellow-100 text-yellow-700">
+              ⏳ Pending
+            </span>
+            {{/if}}
+
+
+          </div>
+
+          <div class="flex gap-2">
+
+            <form action="/task/edit/{{_id}}" method="GET">
+              <button class="bg-yellow-400 px-4 py-2 rounded-lg text-white hover:bg-yellow-500 transition">
+                Edit
+              </button>
+            </form>
+
+            <form action="/task/complete/{{_id}}" method="POST">
+              <button class="bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 transition">
+                Complete
+              </button>
+            </form>
+
+            <form action="/task/delete/{{_id}}" method="POST">
+              <button class="bg-red-500 px-4 py-2 rounded-lg text-white hover:bg-red-600 transition">
+                Delete
+              </button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {{/each}}
+      {{else}}
+
+      <div class="bg-white rounded-2xl shadow p-10 text-center">
+        <h3 class="text-2xl font-semibold text-slate-700">
+          No Tasks Yet
+        </h3>
+
+        <p class="text-slate-500 mt-2">
+          Create your first task to get started.
+        </p>
+
+        <a href="/task/add" class="inline-block mt-4 bg-sky-500 text-white px-5 py-3 rounded-lg">
+          Create Task
+        </a>
+      </div>
+
+      {{/if}}
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

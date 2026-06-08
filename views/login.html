@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+
+<body class="bg-sky-50 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white w-full max-w-lg rounded-2xl shadow-xl p-8">
+
+    <div class="text-center mb-8">
+
+      {{> authHeader}}
+      <h2 class="text-3xl font-bold text-slate-800 mt-4">
+        Welcome Back
+      </h2>
+
+      <p class="text-slate-500 mt-2">
+        Enter Your Credentials
+      </p>
+
+    </div>
+
+    {{#each errors}}
+      <div class="bg-red-100 text-red-600 p-3 rounded-lg mb-4">
+        {{message}}
+      </div>
+    {{/each}}
+
+    <form action="/userlogin" method="POST" class="space-y-4">
+
+      <div>
+        <label class="block text-sm text-slate-600 mb-2">
+          Email
+        </label>
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400"
+        >
+      </div>
+
+      <div>
+        <label class="block text-sm text-slate-600 mb-2">
+          Password
+        </label>
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          class="w-full border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-400"
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-sky-500 text-white py-3 rounded-lg hover:bg-sky-600 transition"
+      >
+        Sign In
+      </button>
+
+    </form>
+
+    <p class="text-center text-slate-500 mt-6">
+      Don't have an account?
+
+      <a
+        href="/"
+        class="text-sky-500 font-medium"
+      >
+        Register
+      </a>
+    </p>
+
+  </div>
+
+</body> 
+
+
+
+</html>
