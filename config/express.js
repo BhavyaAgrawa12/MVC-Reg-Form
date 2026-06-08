@@ -30,6 +30,6 @@ app.use(session({
   saveUninitialized: false,
 }))
 
-connectDB();
+
 
 module.exports = app;
